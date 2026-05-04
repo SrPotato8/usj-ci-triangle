@@ -25,6 +25,12 @@
       triangleType = getTriangleType(a, b, c);
       // Shows the type of Triangle in the web site
       displayTriangleType(triangleType);
+
+      // After triangle type is calculated
+      gtag('event', 'triangle_calculated', {
+      'triangle_type': triangleType,  // e.g., 'EQUILATERAL'
+      'timestamp': new Date().toISOString()
+      });
     }
 
     /*

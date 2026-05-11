@@ -1,62 +1,65 @@
-<html>
-  <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S2XVZ4SQ80"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI',
+            Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        p {
+            font-weight: bold;
+            color: #34495e;
+        }
+        .swap-btn {
+            font-size: 0.8rem;
+            color: #3498db;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
 
-  gtag('config', 'G-S2XVZ4SQ80');
-</script>
-  <script src="script.js"></script> 
-  <script>
-    /*
-     * Gets the lenghts of the sides of the triangle from the HTML elements
-     * calculates the type of triangle and shows the type on the page
-     */
-    function chekTriangleType() {
-      // Get the lengths of the sides from the UI
-      let a = document.getElementById("input-a").value;
-      let b = document.getElementById("input-b").value;
-      let c = document.getElementById("input-c").value;
+<div class="card">
+    <h2 id="title">Decimal to Roman</h2>
+    <input type="text" id="inputVal" placeholder="Enter a number (e.g., 155)" oninput="convertir()">
+    <p id="result">Result: -</p>
+    <span class="swap-btn" onclick="toggleMode()">Change Mode</span>
+</div>
 
-      // Calculate the type of Triangle
-      triangleType = getTriangleType(a, b, c);
-      // Shows the type of Triangle in the web site
-      displayTriangleType(triangleType);
-
-      // After triangle type is calculated
-      gtag('event', 'triangle_calculated', {
-      'triangle_type': triangleType,  // e.g., 'EQUILATERAL'
-      'timestamp': new Date().toISOString()
-      });
-    }
-
-    /*
-     * Updates the HTML element result with the passed argument 
-     * (used for the triangle type)
-     */
-    function displayTriangleType(type) {
-      document.getElementById("result").innerHTML = '<b>Result</b> ' + type;
-    }
-
-    </script>
-    </head>
-    <body>
-        <h1> Calculate Triangles - Modification </h1>
-        <p>
-        Length of Side A <input name="input-a" id="input-a" value="1"> </input>
-        </p>
-        <p>
-        Length of Side B <input name="input-b" id="input-b" value="1"> </input>
-        </p>
-        <p>
-        Length of Side C <input name="input-c" id="input-c" value="1"> </input>
-        </p>
-        <p>
-        <button name='button-calculate' onclick='javascript:chekTriangleType()'> Calculate </button>
-        </p>
-        <div id="result">  </div>
-    </body>
+<script src="script.js"></script>
+</body>
 </html>

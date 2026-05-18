@@ -13,7 +13,7 @@ function toggleMode() {
         'event_label': 'Cambiando direccion de conversion'
     });
     
-    console.log("Evento change_mode_click enviado"); // Para que verifiques en la consola
+    console.log('Evento change_mode_click enviado'); // Para que verifiques en la consola
 }
 
 function toRoman(num) {

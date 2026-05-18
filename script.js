@@ -14,6 +14,14 @@ function toggleMode() {
     });
     
     console.log('Evento change_mode_click enviado'); // Para que verifiques en la consola
+
+    // Dentro de tu función de convertir, donde detectas que el input es inválido:
+    gtag('event', 'conversion_error', {
+        'event_category': 'error',
+        'event_label': 'Input invalido',
+        'value': document.getElementById('inputVal').value
+    });
+    console.log('Evento GA4 enviado: conversion_error');
 }
 
 function toRoman(num) {

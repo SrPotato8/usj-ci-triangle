@@ -14,14 +14,6 @@ function toggleMode() {
     });
     
     console.log('Evento change_mode_click enviado'); // Para que verifiques en la consola
-
-    // Dentro de tu función de convertir, donde detectas que el input es inválido:
-    gtag('event', 'conversion_error', {
-        'event_category': 'error',
-        'event_label': 'Input invalido',
-        'value': document.getElementById('inputVal').value
-    });
-    console.log('Evento GA4 enviado: conversion_error');
 }
 
 function toRoman(num) {
@@ -54,14 +46,38 @@ function toDecimal(roman) {
     return isNaN(decimal) ? 'Invalid Roman' : decimal;
 }
 
+//function convertir() {
+//    const val = document.getElementById('inputVal').value;
+//    const resElement = document.getElementById('result');
+//    if (!val) { resElement.innerText = 'Result: -'; return; }
+//    
+//    if (mode === 'toRoman') {
+//        resElement.innerText = 'Result: ' + toRoman(parseInt(val));
+//    } else {
+//        resElement.innerText = 'Result: ' + toDecimal(val);
+//    }
+//}
+
 function convertir() {
     const val = document.getElementById('inputVal').value;
     const resElement = document.getElementById('result');
     if (!val) { resElement.innerText = 'Result: -'; return; }
     
+    let result;
     if (mode === 'toRoman') {
-        resElement.innerText = 'Result: ' + toRoman(parseInt(val));
+        result = toRoman(parseInt(val));
     } else {
-        resElement.innerText = 'Result: ' + toDecimal(val);
+        result = toDecimal(val);
+    }
+
+    resElement.innerText = 'Result: ' + result;
+
+    // EVENTO 2: Error de conversión (solo si el resultado contiene 'Invalid')
+    if (result.toString().includes('Invalid')) {
+        gtag('event', 'conversion_error', {
+            'event_category': 'error',
+            'event_label': val
+        });
+        console.log('Evento GA4 enviado: conversion_error');
     }
 }
